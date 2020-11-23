@@ -1,0 +1,48 @@
+﻿@model Contatos.Models.Contato
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+
+<h4>Contato</h4>
+<hr />
+<body onload="FnLoad(@ViewBag.IdContato)">
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="IdContato" />
+                <div class="form-group">
+                    <label asp-for="Nome" class="control-label"></label>
+                    <input asp-for="Nome" class="form-control" />
+                    <span asp-validation-for="Nome" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                    <a asp-action="DeleteConfirmed" class="btn btn-danger" asp-route-id="@ViewBag.IdContato">Delete</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="card-deck mb-3 text-center">
+
+
+
+        <div class="card">
+            <div id="divEmail" style="display:none;"></div>
+        </div>
+        <div class="card">
+            <div id="divTelefone" style="display:none;"></div>
+        </div>
+    </div>
+
+    <p>
+        <a asp-action="Index">Retornar Pagina Inical</a>
+    </p>
+</body>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

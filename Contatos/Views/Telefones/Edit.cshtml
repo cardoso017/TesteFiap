@@ -1,0 +1,41 @@
+﻿@model Contatos.Models.Telefone
+
+
+
+<div class="body-content">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title">Editar Telefone</h6>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="IdTelefone" />
+                        <div class="form-group">
+                            <label asp-for="Numero" style="float:left" class="control-label"></label>
+                            <input asp-for="Numero" class="form-control" />
+                            <span asp-validation-for="Numero" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+
+                            <button style="float:right" class="btn btn-danger" onclick="fnDeletarTelefone(@ViewBag.IdContato, @ViewBag.IdEmail)" /> Deletar &nbsp;&nbsp;&nbsp;&nbsp;
+                            <button style="float:right" class="btn btn-primary" onclick="FnEditarTelefone(@ViewBag.IdContato, @ViewBag.IdEmail)" /> Editar
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

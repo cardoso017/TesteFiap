@@ -1,0 +1,56 @@
+﻿@model Contatos.Models.Consulta
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<p>
+    <a asp-action="Create">Adicionar novo contato</a>
+</p>
+
+@using (Html.BeginForm("Index", "Contatos", FormMethod.Post))
+{
+    @Html.LabelFor(m => m.Nome, "Nome:")
+    @Html.TextBoxFor(m => m.Nome, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Nome)
+
+    <input type="submit" values="Buscar" />}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>Nome</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.contatos)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdContato)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdContato">Editar Nome</a>
+
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

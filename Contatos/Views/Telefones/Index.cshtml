@@ -1,0 +1,64 @@
+﻿@model Contatos.Models.EntradaContrato
+
+
+
+
+<div class="card-body">
+    <div>
+        <div class="col-md-12">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Telefone.Numero" class="control-label"></label>
+                <input asp-for="Telefone.Numero" class="form-control" placeholder="(11)9xxxx-xxxx or (11) xxxx-xxxx" />
+                <span asp-validation-for="Telefone.Numero" class="text-danger"></span>
+                <br />
+                <a href="#" onclick="FnTelefone(@ViewBag.IdContato)" style="float:right" class="btn btn-primary">ADD</a>
+
+                <br />
+            </div>
+
+        </div>
+
+        <div class="col-md-10">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Telefone.Numero)
+                        </th>
+                        <th>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ListarTelefones)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Numero)
+                            </td>
+
+                            <td>
+
+                                <a href="#" onclick="FnDetailsTelefone(@item.IdTelefone)">Detalhe</a>
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal fade" id="ModalEditarTelefone">
+        <div class="modal-body" id="DivEditarTelefone">
+        </div>
+
+    </div>
+
+
+
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

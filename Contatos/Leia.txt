@@ -1,0 +1,9 @@
+1- Executar o script Sql que se encontra, na pasta de script sql da aplicação 
+
+
+2- Executar primeiro o create data base , e depois o resto do script
+
+
+3- Alterar a string de conexão que se encontra dentro do arquivo appsettings.json para o seu servidor. 
+
+4- Atentar ao localhost que está sendo executado. Atualmente deixei definido a porta localhost:44350, caso esteja rodando e uma porta diferente atualizar todo o localhost com um cntrl f, do documento atual. Para a porta que estiver executando.  

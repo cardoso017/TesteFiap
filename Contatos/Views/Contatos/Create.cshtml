@@ -1,0 +1,55 @@
+﻿@model Contatos.Models.EntradaContrato
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+
+
+
+<h4>Contato</h4>
+<hr />
+<script src="~/js/Contato.js"></script>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Contato.Nome" class="control-label"></label>
+                <input asp-for="Contato.Nome" class="form-control" />
+                <span asp-validation-for="Contato.Nome" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <a href="#" onclick="FnContato()" class="btn btn-primary">Adicionar Dados</a>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+<br>
+
+<div class="card-deck mb-3 text-center">
+
+
+    <div class="card">
+        <div id="divEmail" style="display:none;"></div>
+    </div>
+    <div class="card">
+        <div id="divTelefone" style="display:none;"></div>
+    </div>
+</div>
+
+<p>
+    <a asp-action="Index">Retornar Pagina Inical</a>
+</p>
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

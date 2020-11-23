@@ -1,0 +1,61 @@
+﻿@model Contatos.Models.EntradaContrato
+
+
+
+
+<div class="card-body">
+    <div>
+        <div class="col-md-12">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="emails.Email" class="control-label"></label>
+                <input asp-for="emails.Email" class="form-control" placeholder="name@example.com" />
+                <span asp-validation-for="emails.Email" class="text-danger"></span>
+                <br />
+                <a href="#" onclick="FnEmail(@ViewBag.IdContato, @ViewBag.Partial)" style="float:right" class="btn btn-primary">ADD</a>
+
+                <br />
+            </div>
+
+        </div>
+
+        <div class="col-md-10">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.emails.Email)
+                        </th>
+                        <th>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ListarEmails)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+
+                            <td>
+
+                                <a href="#" onclick="FnDetailsEmail(@item.IdEmail)">Detalhe</a>
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="ModalEditarEmail">
+    <div class="modal-body" id="DivEditarEmail">
+    </div>
+
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

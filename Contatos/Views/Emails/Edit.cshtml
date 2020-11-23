@@ -1,0 +1,41 @@
+﻿@model Contatos.Models.Emails
+
+
+
+<div class="body-content">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title">Editar email</h6>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="IdEmail" />
+                        <div class="form-group">
+                            <label asp-for="Email" style="float:left" class="control-label"></label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+
+                            <button style="float:right" class="btn btn-danger" onclick="fnDeletarEmail(@ViewBag.IdContato, @ViewBag.IdEmail)" > Deletar </button>
+                            <button style="float:right" class="btn btn-primary" onclick="FnEditarEmail(@ViewBag.IdContato, @ViewBag.IdEmail)" > Editar </button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
